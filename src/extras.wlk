@@ -38,6 +38,8 @@ class Extra {
 		self.crearTick()
 		self.efectoDeColision()
 	}
+	
+	method alcanzarLosPuntos() = jugador.puntos() > 1000
 
 	method nombreEvento()
 
@@ -59,6 +61,9 @@ object proteccion inherits Extra {
 		jugador.proteccionCantidad(1)
 		barraDeProteccion.removerDePantalla()
 		jugador.image("maradoArg.png")
+		if (self.alcanzarLosPuntos()){
+			game.removeTickEvent(self.nombreEvento())
+		}
 	}
 
 }
@@ -74,6 +79,9 @@ object vida inherits Extra {
 	override method efectoDeColision() {
 		jugador.sumoVida()
 		barraDeVida.removerDePantalla()
+		if (self.alcanzarLosPuntos()){
+			game.removeTickEvent(self.nombreEvento())
+		}
 	}
 
 }
@@ -88,6 +96,8 @@ object score {
 	}
 
 	method puntuacionTotal() = jugador.puntos()
+	
+	
 
 }
 

@@ -20,8 +20,13 @@ class Rival {
 		game.onTick(self.tiempoEvento(), self.nombreEvento(), { self.mover()})
 	}
 
+	method alcanzarPuntos() = jugador.puntos() > 1000
+
 	method mover() {
 		self.llegarAlFin()
+		if (self.alcanzarPuntos()) {
+			self.eliminar()
+		}
 	}
 
 	method llegarAlFin() {
@@ -42,6 +47,9 @@ class Rival {
 		jugador.estado()
 	}
 
+	method eliminar() {
+	}
+
 	method nombreEvento()
 
 	method tiempoEvento()
@@ -55,7 +63,7 @@ class Alemania inherits Rival {
 
 	override method nombreEvento() = "moverAlemania"
 
-	override method tiempoEvento() = 500
+	override method tiempoEvento() = 200
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
@@ -63,6 +71,11 @@ class Alemania inherits Rival {
 		} else {
 			return super() * 1
 		}
+	}
+
+	override method eliminar() {
+		game.removeTickEvent(self.nombreEvento())
+		game.removeVisual(self)
 	}
 
 }
@@ -74,7 +87,7 @@ class Brasil inherits Rival {
 
 	override method nombreEvento() = "moverBrasil"
 
-	override method tiempoEvento() = 800
+	override method tiempoEvento() = 400
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
@@ -84,6 +97,10 @@ class Brasil inherits Rival {
 		}
 	}
 
+	override method eliminar() {
+		game.removeTickEvent(self.nombreEvento())
+		game.removeVisual(self)
+	}
 
 }
 
@@ -94,7 +111,7 @@ class Inglaterra inherits Rival {
 
 	override method nombreEvento() = "moverInglaterra"
 
-	override method tiempoEvento() = 1000
+	override method tiempoEvento() = 600
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
@@ -104,12 +121,16 @@ class Inglaterra inherits Rival {
 		}
 	}
 
-}
+	override method eliminar() {
+		game.removeTickEvent(self.nombreEvento())
+		game.removeVisual(self)
+	}
 
+}
 
 class CreadorRivales {
 
-	const coleccionDeRivales = [ new Alemania(), new Inglaterra(), new Brasil() ]
+	const coleccionDeRivales = [ new Alemania(), new Inglaterra(), new Brasil(), new Alemania(), new Inglaterra(), new Brasil()]
 
 	method crear() {
 		coleccionDeRivales.forEach({ e =>
@@ -119,4 +140,13 @@ class CreadorRivales {
 		})
 	}
 
+	method remover() {
+		coleccionDeRivales.forEach({ e =>
+			if (game.hasVisual(e)) {
+				e.eliminar()
+			}
+		})
+	}
+
 }
+

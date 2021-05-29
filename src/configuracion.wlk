@@ -13,7 +13,7 @@ object configuracion {
 		game.width(15)
 		game.boardGround("cancha.jpg")
 		game.addVisual(primera)
-		game.schedule(1, {game.sound("assets/sounds/unState.mp3").play()})
+		game.schedule(1, { game.sound("assets/sounds/unState.mp3").play()})
 	}
 
 	method teclado() {
@@ -34,21 +34,21 @@ object configuracion {
 		if (game.hasVisual(primera)) {
 			game.removeVisual(primera)
 			self.crearJugador()
-			const grupo1 = new CreadorRivales()  //**********************************************************
-			const grupo2 = new CreadorRivales()  //*********** Grupos de rivales*****************************
-			const grupo3 = new CreadorRivales()  //**********************************************************
-			grupo1.crear()
-			game.schedule(10000, { grupo2.crear()})//****************Dificultad 2******************************
-			game.schedule(20000, { grupo3.crear()})//**********************************Dificultad 3************
+			const grupo1 = new CreadorRivales() // **********************************************************
+//			const grupo2 = new CreadorRivales() // *********** Grupos de rivales*****************************
+//			const grupo3 = new CreadorRivales() // **********************************************************
+			game.schedule(1000, {grupo1.crear()})
+//			game.schedule(5000, { grupo2.crear()})//****************Dificultad 2******************************
+//			game.schedule(20000, { grupo3.crear()})//**********************************Dificultad 3************
 		}
 	}
 
 	method crearJugador() {
 		if (!game.hasVisual(jugador)) {
 			game.addVisual(arco)
+			game.addVisual(arquero)
 			game.addVisual(jugador)
 			jugador.position(new Position(x = 3, y = 3))
-	//		jugador.movimiento(quieto)
 			jugador.vidaJugador(5)
 			jugador.puntos(0)
 			barraDeVida.dibujarEnPantalla()
@@ -59,7 +59,7 @@ object configuracion {
 		}
 	}
 
-	//********************************* Movilidad *******************************************
+	// ********************************* Movilidad *******************************************
 	method movimientoJugador() {
 		game.onTick(150, "mover", { jugador.mover()})
 		self.moverJugador()
@@ -70,8 +70,7 @@ object configuracion {
 		keyboard.s().onPressDo({ jugador.movimiento(abajo.position())})
 		keyboard.a().onPressDo({ jugador.movimiento(izq.position())})
 		keyboard.d().onPressDo({ jugador.movimiento(der.position())})
-		keyboard.space().onPressDo({ jugador.movimiento(quieto.position())})
-		keyboard.f().onPressDo({ jugador.dispararPelota()})
+		keyboard.space().onPressDo({ jugador.dispararPelota()})
 	}
 
 	// *********************************Bonus*********************************************
@@ -82,7 +81,8 @@ object configuracion {
 	}
 
 	method colides() {
-		game.onCollideDo(jugador, { rival => jugador.danioVida(rival.danio(), rival)})
+		game.whenCollideDo(jugador, { rival => jugador.danioVida(rival.danio(), rival)})
+		
 	}
 
 }

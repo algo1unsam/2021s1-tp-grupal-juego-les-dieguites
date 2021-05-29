@@ -10,46 +10,42 @@ object jugador {
 	var property image = "marado.png"
 	var property vidaJugador = 5
 	var property position = new Position(x = 3, y = 3)
-	//var direccion = quieto
 	var property proteccionCantidad = 0
 	var property puntos = 0
-	//var property ultimaPosicion = position
 
 	method movimiento(direccionModificar) {
-//		direccion = direccionModificar
 		self.position(direccionModificar)
-		
-		}
-//	}
+	}
 
-	method dispararPelota(){
+	method dispararPelota() {
 		const pelota = new Pelota()
 		pelota.disparo()
-		vidaJugador -= 1
-
-}
-	method sumoVida(){ 
-		vidaJugador += 1
-		
+		self.restoVida()
+		self.estado()
 	}
-	
+
+	method tengoVida() {
+		return vidaJugador > 0
+	}
+
+	method restoVida() {
+		vidaJugador -= 1
+	}
+
+	method sumoVida() {
+		vidaJugador += 1
+	}
+
 	method mover() {
 		if (self.position().y() == game.height() - 2) {
-	//		direccion = quieto
 			position = position.down(1)
-		} else if (self.position().y() == 2) {
-	//		direccion = quieto
+		} else if (self.position().y() == 1) {
 			position = position.up(1)
 		} else if (self.position().x() == 0) {
-		//	direccion = quieto
 			position = position.right(1)
 		} else if (self.position().x() == game.width() - game.width() / 3.roundUp()) {
-	//		direccion = quieto
 			position = position.left(1)
-			}
-//		} else {
-//			position = self.position()
-//		}
+		}
 	}
 
 	method danioVida(danio, rival) {
@@ -99,11 +95,7 @@ object der {
 
 }
 
-object quieto {
 
-	method position() = jugador.position()
-
-}
 
 object perdiste {
 
