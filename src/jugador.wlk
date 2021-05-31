@@ -101,7 +101,7 @@ object der {
 object perdiste {
 
 	method finJuego() {
-		configuracion.detenerMusica()
+		//configuracion.detenerMusica()
 		game.clear()
 		game.addVisual(gameOver)
 		game.addVisual(jugadorScoreCartel)
