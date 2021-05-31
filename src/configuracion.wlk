@@ -13,7 +13,7 @@ object configuracion {
 		game.width(15)
 		game.boardGround("cancha.jpg")
 		game.addVisual(primera)
-		game.schedule(1, { game.sound("assets/sounds/unState.mp3").play()})
+		
 	}
 	
 	//method detenerMusica(){
@@ -49,6 +49,7 @@ object configuracion {
 
 	method crearJugador() {
 		if (!game.hasVisual(jugador)) {
+			game.schedule(1, { game.sound("assets/sounds/unState.mp3").play()})
 			game.addVisual(arco)
 			game.addVisual(arquero)
 			game.addVisual(jugador)
