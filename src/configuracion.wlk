@@ -13,8 +13,13 @@ object configuracion {
 		game.width(15)
 		game.boardGround("cancha.jpg")
 		game.addVisual(primera)
-		game.schedule(1, { game.sound("assets/sounds/unState.mp3").play()})
+		game.schedule(1,{game.sound("assets/sounds/unState.mp3").play()})
 	}
+
+	method detenerMusica(){
+		game.schedule(1,{game.sound("assets/sounds/unState.mp3").stop()})
+	}
+
 
 	method teclado() {
 		keyboard.enter().onPressDo({ self.manejarPantalla()})

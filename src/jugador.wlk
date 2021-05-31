@@ -66,6 +66,7 @@ object jugador {
 			barraDeProteccion.removerDePantalla()
 		} else {
 			perdiste.finJuego()
+			
 		}
 	}
 
@@ -100,9 +101,11 @@ object der {
 object perdiste {
 
 	method finJuego() {
+		configuracion.detenerMusica()
 		game.clear()
 		game.addVisual(gameOver)
 		game.addVisual(jugadorScoreCartel)
+		//game.sound("assets/sounds/gameOver.mp3").play()
 		self.repetirMensaje()
 		game.onTick(4000, "Mensaje", { self.repetirMensaje()})
 		configuracion.teclado()
