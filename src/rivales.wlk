@@ -3,6 +3,7 @@ import jugador.*
 import graficos.*
 import extras.*
 import pelota.*
+import audio.*
 
 class Rival {
 

@@ -4,6 +4,8 @@ import rivales.*
 import graficos.*
 import extras.*
 import pelota.*
+import audio.*
+
 
 object configuracion {
 
@@ -13,13 +15,9 @@ object configuracion {
 		game.width(15)
 		game.boardGround("cancha.jpg")
 		game.addVisual(primera)
-		
+		game.schedule(0 ,{audio.reproducirCancion()})	
 	}
 	
-	//method detenerMusica(){
-	//	game.sound("assets/sounds/unState.mp3").stop()
-	//}
-
 	method teclado() {
 		keyboard.enter().onPressDo({ self.manejarPantalla()})
 	}
@@ -49,7 +47,6 @@ object configuracion {
 
 	method crearJugador() {
 		if (!game.hasVisual(jugador)) {
-			game.schedule(1, { game.sound("assets/sounds/unState.mp3").play()})
 			game.addVisual(arco)
 			game.addVisual(arquero)
 			game.addVisual(jugador)
@@ -91,4 +88,7 @@ object configuracion {
 	}
 
 }
+
+
+
 

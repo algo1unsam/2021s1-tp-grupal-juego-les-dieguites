@@ -4,6 +4,7 @@ import configuracion.*
 import graficos.*
 import extras.*
 import pelota.*
+import audio.*
 
 object jugador {
 
@@ -101,7 +102,8 @@ object der {
 object perdiste {
 
 	method finJuego() {
-	 	//configuracion.detenerMusica()
+	 	audio.parar()
+	 	audio.reproducirFrase()
 		game.clear()
 		game.addVisual(gameOver)
 		game.addVisual(jugadorScoreCartel)

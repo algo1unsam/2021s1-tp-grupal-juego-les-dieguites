@@ -3,11 +3,13 @@ import jugador.*
 import rivales.*
 import configuracion.*
 import extras.*
+import audio.*
 
 
 program juego {
 	configuracion.inicio()
 	configuracion.teclado()
+	
 	game.start()
 }
 
