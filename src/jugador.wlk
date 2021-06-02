@@ -37,10 +37,13 @@ object jugador {
 
 	method restoVida() {
 		vidaJugador -= 1
+		
 	}
 
 	method sumoVida() {
 		vidaJugador += 1
+		audio.ganoVida()
+		
 	}
 
 	method mover() {
@@ -60,6 +63,7 @@ object jugador {
 			proteccionCantidad -= danio
 		} else {
 			vidaJugador -= danio
+			
 		}
 		if (proteccionCantidad == 0) {
 			self.image("marado.png")
@@ -109,7 +113,7 @@ object perdiste {
 
 	method finJuego() {
 	 	audio.parar()
-	 	audio.reproducirFrase()
+	 	audio.reproducirFrasePerdedora()
 		game.clear()
 		game.addVisual(gameOver)
 		game.addVisual(jugadorScoreCartel)
@@ -129,9 +133,9 @@ object ganaste {
 	
 	method finJuego() {
 	 	audio.parar()
-	 	audio.reproducirFraseGanaste()
+	 	audio.reproducirFraseGanadora()
 		game.clear()
-		game.addVisual(win)
+		game.addVisual(gamewin)
 		game.addVisual(jugadorScoreCartel)
 		self.repetirMensaje()
 		game.onTick(4000, "Mensaje", { self.repetirMensaje()})

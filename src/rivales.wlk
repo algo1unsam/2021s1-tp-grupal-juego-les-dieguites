@@ -70,6 +70,7 @@ class Alemania inherits Rival {
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
+			audio.perdioVida()
 			return super() * 1
 		}
 	}
@@ -94,6 +95,7 @@ class Brasil inherits Rival {
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
+			audio.perdioVida()
 			return super() * 2
 		}
 	}
@@ -118,6 +120,7 @@ class Inglaterra inherits Rival {
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
+			audio.perdioVida()
 			return super() * 3
 		}
 	}
