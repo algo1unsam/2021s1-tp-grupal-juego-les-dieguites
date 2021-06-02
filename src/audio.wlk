@@ -10,6 +10,7 @@ object audio {
 	
 	method cancion() = game.sound("assets/sounds/unState.mp3")
 	method frase() = game.sound("assets/sounds/gameOver.mp3")
+	method fraseGanaste() = game.sound("assets/sounds/gameOver.mp3") //falta audio
 	
 	method reproducirCancion(){
 	cancionActual = self.cancion()
@@ -26,6 +27,11 @@ object audio {
 	
 	method reproducirFrase(){
 		cancionActual = self.frase()
+		cancionActual.play()
+	}
+	
+	method reproducirFraseGanaste(){
+		cancionActual = self.fraseGanaste()
 		cancionActual.play()
 	}
 		

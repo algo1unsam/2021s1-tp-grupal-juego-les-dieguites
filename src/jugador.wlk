@@ -19,12 +19,18 @@ object jugador {
 	}
 
 	method dispararPelota() {
+		if( self.alcanzarPuntos()) {
 		const pelota = new Pelota()
 		pelota.disparo()
 		self.restoVida()
 		self.estado()
+		}	
 	}
-
+	
+	method alcanzarPuntos() {
+	return self.puntos() > 1000
+	}
+	
 	method tengoVida() {
 		return vidaJugador > 0
 	}
@@ -107,7 +113,6 @@ object perdiste {
 		game.clear()
 		game.addVisual(gameOver)
 		game.addVisual(jugadorScoreCartel)
-		//game.sound("assets/sounds/gameOver.mp3").play()
 		self.repetirMensaje()
 		game.onTick(4000, "Mensaje", { self.repetirMensaje()})
 		configuracion.teclado()
@@ -119,4 +124,27 @@ object perdiste {
 	}
 
 }
+
+object ganaste {
+	
+	method finJuego() {
+	 	audio.parar()
+	 	audio.reproducirFraseGanaste()
+		game.clear()
+		game.addVisual(win)
+		game.addVisual(jugadorScoreCartel)
+		self.repetirMensaje()
+		game.onTick(4000, "Mensaje", { self.repetirMensaje()})
+		configuracion.teclado()
+	}
+
+	method repetirMensaje() {
+		game.say(jugadorScoreCartel, "Obtuviste " + jugador.puntos().toString() + " puntos")
+		game.say(jugadorScoreCartel, "Presiona Enter para reiniciar")
+	}
+
+}
+ 
+	
+
 

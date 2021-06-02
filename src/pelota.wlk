@@ -23,9 +23,9 @@ class Pelota {
 	method llegarAlArco() {
 		if (self.position().x() != 0) {
 			position = position.right(1)
-//			if (self.esGol()) {
-//				perdiste.finJuego()
-//			}
+			if (self.esGol()) {
+				ganaste.finJuego()
+			}
 		} else {
 			game.removeTickEvent("moverPelota")
 			game.removeVisual(self)
@@ -40,9 +40,9 @@ class Pelota {
 		algo.llegar(self)
 	}
 
-//	method esGol() {
-//		return self.position().x() == 13 and self.position().y() == 3 or self.position().x() == 13 and self.position().y() == 4 or self.position().x() == 13 and self.position().y() == 5 or self.position().x() == 13 and self.position().y() == 6
-//	}
+	method esGol() {
+		return self.position().x() == 13 and self.position().y() == 3 or self.position().x() == 13 and self.position().y() == 4 or self.position().x() == 13 and self.position().y() == 5 or self.position().x() == 13 and self.position().y() == 6
+	}
 
 }
 

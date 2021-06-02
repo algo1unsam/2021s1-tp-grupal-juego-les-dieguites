@@ -12,6 +12,12 @@ object gameOver {
 
 }
 
+object win {
+	var property image = "win.png"
+	var property position = new Position(x = 0, y = 0)
+	
+}
+
 object primera {
 
 	var property image = "primera.png"
