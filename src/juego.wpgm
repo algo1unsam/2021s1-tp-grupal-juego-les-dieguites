@@ -9,7 +9,6 @@ import audio.*
 program juego {
 	configuracion.inicio()
 	configuracion.teclado()
-	
 	game.start()
 }
 
