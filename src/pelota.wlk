@@ -41,7 +41,7 @@ class Pelota {
 	}
 
 	method esGol() {
-		return self.position().x() == 13 and self.position().y() == 3 or self.position().x() == 13 and self.position().y() == 4 or self.position().x() == 13 and self.position().y() == 5 or self.position().x() == 13 and self.position().y() == 6
+		return self.position().x() == 13 and self.position().y() == 3 or self.position().x() == 13 and self.position().y() == 4 or self.position().x() == 13 and self.position().y() == 5 or self.position().x() == 13 and self.position().y() == 6 and arquero.position()  
 	}
 
 }
@@ -57,18 +57,14 @@ object arco {
 
 }
 
+//arquero.position
 object arquero {
 
 	var property image = "arquero.png"
 	var property position = new Position(x = 11, y = 4)
 
 	method movimiento() {
-		if (self.position().y() <= 6) {
-			position = position.down(1)
-		}
-		if (self.position().y() >= 3) {
-			position = position.up(1)
-		}
+		//position = 3.randomUpTo(6)
 	}
 	
 	method llegar(unaPelota){
