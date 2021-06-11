@@ -64,12 +64,8 @@ object arquero {
 	var property direccion = true
 	var property empezarArquero = false
 
-	//method empezarArquero() {
-		//empezarArquero = true
-	//}
 
 	method movimiento() {
-		
 			if (self.position().y() == 6) {
 				direccion = false
 			}
@@ -92,7 +88,7 @@ object arquero {
 	}
 
 	method aparecer() {
-		game.onTick(150, "moverArquero", { self.movimiento()})
+		game.onTick(300, "moverArquero", { self.movimiento()})
 	}
 
 }

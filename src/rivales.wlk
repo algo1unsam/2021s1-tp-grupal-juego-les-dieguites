@@ -27,7 +27,7 @@ class Rival {
 		self.llegarAlFin()
 		if (self.alcanzarPuntos()) {
 			self.eliminar()
-			arquero.aparecer()
+
 		}
 	}
 

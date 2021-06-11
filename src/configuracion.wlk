@@ -37,7 +37,7 @@ object configuracion {
 			game.removeVisual(primera)
 			self.crearJugador()
 			const grupo1 = new CreadorRivales() // **********************************************************
-			
+			arquero.aparecer()
 //			const grupo2 = new CreadorRivales() // *********** Grupos de rivales*****************************
 //			const grupo3 = new CreadorRivales() // **********************************************************
 			game.schedule(1000, {grupo1.crear()})
@@ -85,7 +85,7 @@ object configuracion {
 
 	method colides() {
 		game.whenCollideDo(jugador, { rival => jugador.danioVida(rival.danio(), rival)})
-		
+		game.whenCollideDo(arquero, { unaPelota => arquero.atajar(unaPelota)})
 	}
 
 }
