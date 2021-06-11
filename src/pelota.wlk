@@ -31,17 +31,16 @@ class Pelota {
 			game.removeVisual(self)
 		}
 	}
-	
-	method danioVida(){
-		
+
+	method danioVida() {
 	}
-	
-	method colisiono(algo){
+
+	method colisiono(algo) {
 		algo.llegar(self)
 	}
 
 	method esGol() {
-		return self.position().x() == 13 and self.position().y() == 3 or self.position().x() == 13 and self.position().y() == 4 or self.position().x() == 13 and self.position().y() == 5 or self.position().x() == 13 and self.position().y() == 6 and arquero.position()  
+		return self.position().x() == 13 and self.position().y() == 3 or self.position().x() == 13 and self.position().y() == 4 or self.position().x() == 13 and self.position().y() == 5 or self.position().x() == 13 and self.position().y() == 6 and arquero.position()
 	}
 
 }
@@ -50,8 +49,8 @@ object arco {
 
 	var property position = new Position(x = 13, y = 3)
 	var property image = "arco.png"
-	
-	method llegar(unaPelota){
+
+	method llegar(unaPelota) {
 		unaPelota.llegarAlArco()
 	}
 
@@ -62,24 +61,38 @@ object arquero {
 
 	var property image = "arquero.png"
 	var property position = new Position(x = 11, y = 4)
+	var property direccion = true
+	var property empezarArquero = false
+
+	//method empezarArquero() {
+		//empezarArquero = true
+	//}
 
 	method movimiento() {
-		//position = 3.randomUpTo(6)
+		
+			if (self.position().y() == 6) {
+				direccion = false
+			}
+			if (self.position().y() == 3) {
+				direccion = true
+			}
+			if (direccion) {
+				position = position.up(1)
+			} else position = position.down(1)
+		
 	}
-	
-	method llegar(unaPelota){
+
+	method llegar(unaPelota) {
 		self.atajar(unaPelota)
 	}
-	
-	method atajar(unaPelota){
+
+	method atajar(unaPelota) {
 		game.removeTickEvent("moverPelota")
 		game.removeVisual(unaPelota)
 	}
-	
-	method aparecer(){
-		if(jugador.puntos() > 1000){
-			game.onTick(80, "moverArquero", {self.movimiento()})
-		}
+
+	method aparecer() {
+		game.onTick(150, "moverArquero", { self.movimiento()})
 	}
 
 }

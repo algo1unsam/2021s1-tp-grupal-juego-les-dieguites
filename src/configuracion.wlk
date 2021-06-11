@@ -37,6 +37,7 @@ object configuracion {
 			game.removeVisual(primera)
 			self.crearJugador()
 			const grupo1 = new CreadorRivales() // **********************************************************
+			
 //			const grupo2 = new CreadorRivales() // *********** Grupos de rivales*****************************
 //			const grupo3 = new CreadorRivales() // **********************************************************
 			game.schedule(1000, {grupo1.crear()})

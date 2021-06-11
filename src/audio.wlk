@@ -14,7 +14,7 @@ object audio {
 	
 	method reproducirCancion(){
 	cancionActual = self.cancion()
-	cancionActual.volume(0.1)
+	cancionActual.volume(0)
 	cancionActual.play()
 	}
 	
