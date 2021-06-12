@@ -19,31 +19,29 @@ object jugador {
 	}
 
 	method dispararPelota() {
-		if( self.alcanzarPuntos()) {
-		const pelota = new Pelota()
-		pelota.disparo()
-		self.restoVida()
-		self.estado()
-		}	
+		if (self.alcanzarPuntos()) {
+			const pelota = new Pelota()
+			pelota.disparo()
+			self.restoVida()
+			self.estado()
+		}
 	}
-	
+
 	method alcanzarPuntos() {
-	return self.puntos() > 5000
+		return self.puntos() > 5000
 	}
-	
+
 	method tengoVida() {
 		return vidaJugador > 0
 	}
 
 	method restoVida() {
 		vidaJugador -= 1
-		
 	}
 
 	method sumoVida() {
 		vidaJugador += 1
-	//	audio.ganoVida()
-		
+	// audio.ganoVida()
 	}
 
 	method mover() {
@@ -59,19 +57,15 @@ object jugador {
 	}
 
 	method danioVida(danio, rival) {
-		
 		if (!(proteccionCantidad == 0)) {
 			proteccionCantidad -= danio
 		} else {
 			vidaJugador -= danio
-			
 		}
 		if (proteccionCantidad == 0) {
 			self.image("marado.png")
 		}
 		rival.colision()
-	
-	
 	}
 
 	method estado() {
@@ -80,7 +74,6 @@ object jugador {
 			barraDeProteccion.removerDePantalla()
 		} else {
 			perdiste.finJuego()
-			
 		}
 	}
 
@@ -110,13 +103,11 @@ object der {
 
 }
 
-
-
 object perdiste {
 
 	method finJuego() {
-	 	audio.parar()
-	 	audio.reproducirFrasePerdedora()
+		audio.parar()
+		audio.reproducirFrasePerdedora()
 		game.clear()
 		game.addVisual(gameOver)
 		game.addVisual(jugadorScoreCartel)
@@ -133,10 +124,10 @@ object perdiste {
 }
 
 object ganaste {
-	
+
 	method finJuego() {
-	 	audio.parar()
-	 	audio.reproducirFraseGanadora()
+		audio.parar()
+		audio.reproducirFraseGanadora()
 		game.clear()
 		game.addVisual(gamewin)
 		game.addVisual(jugadorScoreCartel)
@@ -151,7 +142,4 @@ object ganaste {
 	}
 
 }
- 
-	
-
 

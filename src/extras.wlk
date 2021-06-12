@@ -3,7 +3,6 @@ import jugador.*
 import rivales.*
 import graficos.*
 
-
 class Extra {
 
 	var property position
@@ -37,10 +36,8 @@ class Extra {
 		game.removeVisual(self)
 		self.crearTick()
 		self.efectoDeColision()
-		
-		
 	}
-	
+
 	method alcanzarLosPuntos() = jugador.puntos() > 5000
 
 	method nombreEvento()
@@ -63,7 +60,7 @@ object proteccion inherits Extra {
 		jugador.proteccionCantidad(1)
 		barraDeProteccion.removerDePantalla()
 		jugador.image("maradoArg.png")
-		if (self.alcanzarLosPuntos()){
+		if (self.alcanzarLosPuntos()) {
 			game.removeTickEvent(self.nombreEvento())
 		}
 	}
@@ -81,7 +78,7 @@ object vida inherits Extra {
 	override method efectoDeColision() {
 		jugador.sumoVida()
 		barraDeVida.removerDePantalla()
-		if (self.alcanzarLosPuntos()){
+		if (self.alcanzarLosPuntos()) {
 			game.removeTickEvent(self.nombreEvento())
 		}
 	}
@@ -98,8 +95,6 @@ object score {
 	}
 
 	method puntuacionTotal() = jugador.puntos()
-	
-	
 
 }
 

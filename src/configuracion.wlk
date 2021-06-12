@@ -6,7 +6,6 @@ import extras.*
 import pelota.*
 import audio.*
 
-
 object configuracion {
 
 	method inicio() {
@@ -15,9 +14,9 @@ object configuracion {
 		game.width(15)
 		game.boardGround("cancha.jpg")
 		game.addVisual(primera)
-		game.schedule(0 ,{audio.reproducirCancion()})	
+		game.schedule(0, { audio.reproducirCancion()})
 	}
-	
+
 	method teclado() {
 		keyboard.enter().onPressDo({ self.manejarPantalla()})
 	}
@@ -40,7 +39,7 @@ object configuracion {
 			arquero.aparecer()
 //			const grupo2 = new CreadorRivales() // *********** Grupos de rivales*****************************
 //			const grupo3 = new CreadorRivales() // **********************************************************
-			game.schedule(1000, {grupo1.crear()})
+			game.schedule(1000, { grupo1.crear()})
 //			game.schedule(5000, { grupo2.crear()})//****************Dificultad 2******************************
 //			game.schedule(20000, { grupo3.crear()})//**********************************Dificultad 3************
 		}
@@ -84,15 +83,9 @@ object configuracion {
 	}
 
 	method colides() {
-		
 		game.whenCollideDo(jugador, { rival => jugador.danioVida(rival.danio(), rival)})
-		
 		game.whenCollideDo(arquero, { unaPelota => arquero.atajar(unaPelota)})
-	 
 	}
 
 }
-
-
-
 

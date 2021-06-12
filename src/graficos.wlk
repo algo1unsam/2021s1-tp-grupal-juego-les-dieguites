@@ -13,9 +13,10 @@ object gameOver {
 }
 
 object gamewin {
+
 	var property image = "ganaste.png"
 	var property position = new Position(x = 0, y = 0)
-	
+
 }
 
 object primera {

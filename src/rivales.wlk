@@ -27,7 +27,6 @@ class Rival {
 		self.llegarAlFin()
 		if (self.alcanzarPuntos()) {
 			self.eliminar()
-
 		}
 	}
 
@@ -39,7 +38,7 @@ class Rival {
 			self.darVuelta()
 		}
 	}
-	
+
 	method chocoConDiego() = self.position() == jugador.position()
 
 	method darVuelta() {
@@ -70,15 +69,12 @@ class Alemania inherits Rival {
 	override method tiempoEvento() = 150
 
 	override method danio() {
-		
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
-			//audio.perdioVida()
+			// audio.perdioVida()
 			return super() * 1
 		}
-		
-		 
 	}
 
 	override method eliminar() {
@@ -98,15 +94,12 @@ class Brasil inherits Rival {
 	override method tiempoEvento() = 200
 
 	override method danio() {
-		
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
-			//audio.perdioVida()
+			// audio.perdioVida()
 			return super() * 2
 		}
-		
-		
 	}
 
 	override method eliminar() {
@@ -129,7 +122,7 @@ class Inglaterra inherits Rival {
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
-			//audio.perdioVida()
+			// audio.perdioVida()
 			return super() * 3
 		}
 	}
@@ -143,16 +136,14 @@ class Inglaterra inherits Rival {
 
 class CreadorRivales {
 
-	const coleccionDeRivales = [ new Alemania(), new Inglaterra(), new Brasil(), new Alemania(),
-		new Inglaterra(), new Brasil(), new Alemania(), new Inglaterra(), new Brasil()
-	]
+	const coleccionDeRivales = [ new Alemania(), new Inglaterra(), new Brasil(), new Alemania(), new Inglaterra(), new Brasil(), new Alemania(), new Inglaterra(), new Brasil() ]
 
 	method crear() {
 		coleccionDeRivales.forEach({ e =>
 			if (!game.hasVisual(e)) {
 				e.crear()
 			}
-		})		
+		})
 	}
 
 	method remover() {
@@ -162,5 +153,6 @@ class CreadorRivales {
 			}
 		})
 	}
+
 }
 
