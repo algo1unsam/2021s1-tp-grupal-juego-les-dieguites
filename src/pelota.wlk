@@ -32,7 +32,11 @@ class Pelota {
 		}
 	}
 
-	method danioVida() {
+	method danio() {
+		return 0
+	}
+
+	method colision() {
 	}
 
 	method colisiono(algo) {
@@ -64,18 +68,16 @@ object arquero {
 	var property direccion = true
 	var property empezarArquero = false
 
-
 	method movimiento() {
-			if (self.position().y() == 6) {
-				direccion = false
-			}
-			if (self.position().y() == 3) {
-				direccion = true
-			}
-			if (direccion) {
-				position = position.up(1)
-			} else position = position.down(1)
-		
+		if (self.position().y() == 6) {
+			direccion = false
+		}
+		if (self.position().y() == 3) {
+			direccion = true
+		}
+		if (direccion) {
+			position = position.up(1)
+		} else position = position.down(1)
 	}
 
 	method llegar(unaPelota) {
@@ -83,12 +85,14 @@ object arquero {
 	}
 
 	method atajar(unaPelota) {
-		game.removeTickEvent("moverPelota")
-		game.removeVisual(unaPelota)
+		if (unaPelota.position() == self.position()) {
+			game.removeTickEvent("moverPelota")
+			game.removeVisual(unaPelota)
+		}
 	}
 
 	method aparecer() {
-		game.onTick(300, "moverArquero", { self.movimiento()})
+		game.onTick(100, "moverArquero", { self.movimiento()})
 	}
 
 }

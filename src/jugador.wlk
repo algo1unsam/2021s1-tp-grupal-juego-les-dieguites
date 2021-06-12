@@ -28,7 +28,7 @@ object jugador {
 	}
 	
 	method alcanzarPuntos() {
-	return self.puntos() > 1000
+	return self.puntos() > 5000
 	}
 	
 	method tengoVida() {
@@ -42,7 +42,7 @@ object jugador {
 
 	method sumoVida() {
 		vidaJugador += 1
-		audio.ganoVida()
+	//	audio.ganoVida()
 		
 	}
 
@@ -59,6 +59,7 @@ object jugador {
 	}
 
 	method danioVida(danio, rival) {
+		
 		if (!(proteccionCantidad == 0)) {
 			proteccionCantidad -= danio
 		} else {
@@ -69,6 +70,8 @@ object jugador {
 			self.image("marado.png")
 		}
 		rival.colision()
+	
+	
 	}
 
 	method estado() {

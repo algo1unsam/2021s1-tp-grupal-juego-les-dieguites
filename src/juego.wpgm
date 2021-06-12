@@ -11,4 +11,3 @@ program juego {
 	configuracion.teclado()
 	game.start()
 }
-

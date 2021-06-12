@@ -12,7 +12,7 @@ class Rival {
 	var property tiempoCambio = self.tiempoEvento()
 
 	method dondeAparece() {
-		return new Position(x = game.width() - 1, y = 3.randomUpTo(game.height() - 3))
+		return new Position(x = game.width() - 1, y = 2.randomUpTo(game.height() - 2))
 	}
 
 	method crear() {
@@ -21,7 +21,7 @@ class Rival {
 		game.onTick(self.tiempoEvento(), self.nombreEvento(), { self.mover()})
 	}
 
-	method alcanzarPuntos() = jugador.puntos() > 1000
+	method alcanzarPuntos() = jugador.puntos() > 5000
 
 	method mover() {
 		self.llegarAlFin()
@@ -39,6 +39,8 @@ class Rival {
 			self.darVuelta()
 		}
 	}
+	
+	method chocoConDiego() = self.position() == jugador.position()
 
 	method darVuelta() {
 		position = self.dondeAparece()
@@ -65,15 +67,18 @@ class Alemania inherits Rival {
 
 	override method nombreEvento() = "moverAlemania"
 
-	override method tiempoEvento() = 200
+	override method tiempoEvento() = 150
 
 	override method danio() {
+		
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
-			audio.perdioVida()
+			//audio.perdioVida()
 			return super() * 1
 		}
+		
+		 
 	}
 
 	override method eliminar() {
@@ -90,15 +95,18 @@ class Brasil inherits Rival {
 
 	override method nombreEvento() = "moverBrasil"
 
-	override method tiempoEvento() = 400
+	override method tiempoEvento() = 200
 
 	override method danio() {
+		
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
-			audio.perdioVida()
+			//audio.perdioVida()
 			return super() * 2
 		}
+		
+		
 	}
 
 	override method eliminar() {
@@ -115,13 +123,13 @@ class Inglaterra inherits Rival {
 
 	override method nombreEvento() = "moverInglaterra"
 
-	override method tiempoEvento() = 600
+	override method tiempoEvento() = 250
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
 			return jugador.proteccionCantidad()
 		} else {
-			audio.perdioVida()
+			//audio.perdioVida()
 			return super() * 3
 		}
 	}
@@ -135,7 +143,9 @@ class Inglaterra inherits Rival {
 
 class CreadorRivales {
 
-	const coleccionDeRivales = [ new Alemania(), new Inglaterra(), new Brasil(), new Alemania(), new Inglaterra(), new Brasil()]
+	const coleccionDeRivales = [ new Alemania(), new Inglaterra(), new Brasil(), new Alemania(),
+		new Inglaterra(), new Brasil(), new Alemania(), new Inglaterra(), new Brasil()
+	]
 
 	method crear() {
 		coleccionDeRivales.forEach({ e =>

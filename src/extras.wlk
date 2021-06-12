@@ -37,9 +37,11 @@ class Extra {
 		game.removeVisual(self)
 		self.crearTick()
 		self.efectoDeColision()
+		
+		
 	}
 	
-	method alcanzarLosPuntos() = jugador.puntos() > 1000
+	method alcanzarLosPuntos() = jugador.puntos() > 5000
 
 	method nombreEvento()
 
@@ -55,7 +57,7 @@ object proteccion inherits Extra {
 
 	override method nombreEvento() = "Proteccion"
 
-	override method tiempoEvento() = 7000
+	override method tiempoEvento() = 30000
 
 	override method efectoDeColision() {
 		jugador.proteccionCantidad(1)
@@ -74,7 +76,7 @@ object vida inherits Extra {
 
 	override method nombreEvento() = "Vida"
 
-	override method tiempoEvento() = 3000
+	override method tiempoEvento() = 20000
 
 	override method efectoDeColision() {
 		jugador.sumoVida()
@@ -89,7 +91,7 @@ object vida inherits Extra {
 // **************Realiza la operación para la puntuación y lo guarda en una variable del jugador ************************
 object score {
 
-	method calcularPuntos() = (jugador.vidaJugador() + jugador.proteccionCantidad()) * 100
+	method calcularPuntos() = jugador.vidaJugador() * 100
 
 	method ganarPuntos() {
 		jugador.puntos(jugador.puntos() + self.calcularPuntos())

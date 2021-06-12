@@ -84,8 +84,11 @@ object configuracion {
 	}
 
 	method colides() {
+		
 		game.whenCollideDo(jugador, { rival => jugador.danioVida(rival.danio(), rival)})
+		
 		game.whenCollideDo(arquero, { unaPelota => arquero.atajar(unaPelota)})
+	 
 	}
 
 }
