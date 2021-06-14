@@ -28,7 +28,7 @@ object jugador {
 	}
 
 	method alcanzarPuntos() {
-		return self.puntos() > 5000
+		return self.puntos() > 3000
 	}
 
 	method tengoVida() {

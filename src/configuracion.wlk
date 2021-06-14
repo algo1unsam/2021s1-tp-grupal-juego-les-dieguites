@@ -29,6 +29,12 @@ object configuracion {
 			game.addVisual(primera)
 			game.removeTickEvent("Mensaje")
 		}
+		if (game.hasVisual(gamewin)){
+			game.removeVisual(jugadorScoreCartel)
+			game.removeVisual(gamewin)
+			game.addVisual(primera)
+			game.removeTickEvent("Mensaje")
+		}
 	}
 
 	method primeraPantalla() {
@@ -37,11 +43,7 @@ object configuracion {
 			self.crearJugador()
 			const grupo1 = new CreadorRivales() // **********************************************************
 			arquero.aparecer()
-//			const grupo2 = new CreadorRivales() // *********** Grupos de rivales*****************************
-//			const grupo3 = new CreadorRivales() // **********************************************************
 			game.schedule(1000, { grupo1.crear()})
-//			game.schedule(5000, { grupo2.crear()})//****************Dificultad 2******************************
-//			game.schedule(20000, { grupo3.crear()})//**********************************Dificultad 3************
 		}
 	}
 

@@ -7,7 +7,7 @@ import jugador.*
 
 class Pelota {
 
-	var property direccion = der
+	
 	var property position = jugador.position()
 	var property image = "pelota.png"
 
@@ -60,7 +60,7 @@ object arco {
 
 }
 
-//arquero.position
+
 object arquero {
 
 	var property image = "arquero.png"

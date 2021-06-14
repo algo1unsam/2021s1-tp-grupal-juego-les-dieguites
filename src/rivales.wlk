@@ -21,7 +21,7 @@ class Rival {
 		game.onTick(self.tiempoEvento(), self.nombreEvento(), { self.mover()})
 	}
 
-	method alcanzarPuntos() = jugador.puntos() > 5000
+	method alcanzarPuntos() = jugador.puntos() > 3000
 
 	method mover() {
 		self.llegarAlFin()
