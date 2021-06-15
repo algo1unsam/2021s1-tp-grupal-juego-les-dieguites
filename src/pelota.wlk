@@ -13,7 +13,7 @@ class Pelota {
 
 	method disparo() {
 		game.addVisual(self)
-		game.onTick(50, "moverPelota", { self.mover()})
+		game.onTick(140, "moverPelota", { self.mover()})
 	}
 
 	method mover() {

@@ -22,7 +22,7 @@ object configuracion {
 	}
 
 	method manejarPantalla() {
-		self.primeraPantalla()
+		self.primeraPantalla() // inicio del juego
 		if (game.hasVisual(gameOver)) {
 			game.removeVisual(jugadorScoreCartel)
 			game.removeVisual(gameOver)
@@ -37,19 +37,19 @@ object configuracion {
 		}
 	}
 
-	method primeraPantalla() {
+	method primeraPantalla() { // pantalla de inicio se carga y se crea a maradona y a los rivales
 		if (game.hasVisual(primera)) {
 			game.removeVisual(primera)
-			self.crearJugador()
-			const grupo1 = new CreadorRivales() // **********************************************************
-			arquero.aparecer()
-			game.schedule(1000, { grupo1.crear()})
+			self.crearJugador() // maradona en el tablero
+			const grupoRivales = new CreadorRivales() // se crea el grupo de rivales de una coleccion
+			arquero.aparecer()  // movimiento del arquero 
+			game.schedule(1000, { grupoRivales.crear()})
 		}
 	}
 
-	method crearJugador() {
+	method crearJugador() { 
 		if (!game.hasVisual(jugador)) {
-			game.addVisual(arco)
+			game.addVisual(arco) 
 			game.addVisual(arquero)
 			game.addVisual(jugador)
 			jugador.position(new Position(x = 3, y = 3))
@@ -65,11 +65,11 @@ object configuracion {
 
 	// ********************************* Movilidad *******************************************
 	method movimientoJugador() {
-		game.onTick(150, "mover", { jugador.mover()})
+		game.onTick(150, "mover", { jugador.mover()}) // controla que maradona no se pase de los ejes de la cancha
 		self.moverJugador()
 	}
 
-	method moverJugador() {
+	method moverJugador() { // movimientos del taclado
 		keyboard.w().onPressDo({ jugador.movimiento(arriba.position())})
 		keyboard.s().onPressDo({ jugador.movimiento(abajo.position())})
 		keyboard.a().onPressDo({ jugador.movimiento(izq.position())})
@@ -78,13 +78,13 @@ object configuracion {
 	}
 
 	// *********************************Bonus*********************************************
-	method tickExtras() {
+	method tickExtras() { // aparicion de los elementos aleatoriamente, la pelota y el escudo de argentina
 		game.onTick(proteccion.tiempoEvento(), proteccion.nombreEvento(), { proteccion.crearExtra()})
 		game.onTick(vida.tiempoEvento(), vida.nombreEvento(), { vida.crearExtra()})
-		game.onTick(10000, "sumarPuntos", { score.ganarPuntos()})
+		game.onTick(10000, "sumarPuntos", { score.ganarPuntos()}) // la sumatoria de puntos cada 10 seg
 	}
 
-	method colides() {
+	method colides() { // las colisiones de maradona con el rival, los bonus y el arquero con la pelota
 		game.whenCollideDo(jugador, { rival => jugador.danioVida(rival.danio(), rival)})
 		game.whenCollideDo(arquero, { unaPelota => arquero.atajar(unaPelota)})
 	}

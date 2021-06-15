@@ -1,0 +1,91 @@
+
+import configuracion.*
+import extras.*
+import graficos.*
+import jugador.*
+import pelota.*
+import rivales.*
+import wollok.game.*
+
+describe "Los Test del Maradona Game"{
+	
+	var pelota
+	var aleman = new Alemania()
+	var brasilero = new Brasil()
+	var ingles = new Inglaterra()
+		
+		fixture{
+			pelota = new Pelota()
+			configuracion.inicio()
+			configuracion.teclado()
+		}
+	
+	test "carga del juego"{
+		assert.that(game.hasVisual(primera))
+	}
+	test"maradona en pantalla"{
+		configuracion.primeraPantalla()
+		assert.that(game.hasVisual(jugador))
+		assert.equals(5, jugador.vidaJugador())
+		assert.equals(0, jugador.puntos())
+	}
+	
+	test "colisiones con alemanes"{
+		configuracion.primeraPantalla()
+		jugador.danioVida(aleman.danio(), aleman) //los alemanes sacan 1 de vida
+		assert.equals(4, jugador.vidaJugador())
+	}
+	
+	test "colisiones con brasileros"{
+		configuracion.primeraPantalla()
+		jugador.danioVida(brasilero.danio(), brasilero) //los brasileros sacan 2 de vida
+		assert.equals(3, jugador.vidaJugador())
+	}
+	
+	test "colisiones con ingleses"{
+		configuracion.primeraPantalla()
+		jugador.danioVida(ingles.danio(), ingles) //los ingleses sacan 3 de vida
+		assert.equals(2, jugador.vidaJugador())
+	}
+	
+	test "se verifica que la pelota este  en los pies del diego"{
+		assert.that(jugador.position() == pelota.position())
+	}
+	
+	test "colision con la pelota que suma vida"{
+		vida.efectoDeColision()
+		assert.equals(6, jugador.vidaJugador())
+	}
+	
+	test "colision con la bandera que suma proteccion y se pone la camiseta"{
+		proteccion.efectoDeColision()
+		assert.equals(1, jugador.proteccionCantidad())
+		assert.equals("maradoArg.png", jugador.image())
+		//tampoco pierde danio de ningun rival
+		jugador.danioVida(brasilero.danio(), brasilero)
+		assert.equals(5, jugador.vidaJugador())
+	}
+	
+	test "disparo de la pelota y maradona pierde vida"{
+		//tiene que pasar los 3000 puntos para poder disparar
+		jugador.puntos(4000)
+		jugador.dispararPelota()
+		assert.equals(4, jugador.vidaJugador())
+		assert.notThat(pelota.esGol())
+		pelota.position(new Position(x = arco.position().x(), y = arco.position().y()))
+		//es gol cuando la pelota llega al arco
+		assert.that(pelota.esGol())	
+	}
+	
+	test "la pelota la ataja el arquero y la remueve de la pantalla"{
+		game.addVisual(pelota)
+		arquero.atajar(pelota)
+		assert.that(game.hasVisual(pelota)) // no la atajo
+		pelota.position(new Position(x = arquero.position().x(), y = arquero.position().y() ))
+		arquero.atajar(pelota)
+		assert.notThat(game.hasVisual(pelota)) // si la ataja
+	}
+	
+	
+	
+}

@@ -66,7 +66,7 @@ class Alemania inherits Rival {
 
 	override method nombreEvento() = "moverAlemania"
 
-	override method tiempoEvento() = 150
+	override method tiempoEvento() = 200
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
@@ -91,7 +91,7 @@ class Brasil inherits Rival {
 
 	override method nombreEvento() = "moverBrasil"
 
-	override method tiempoEvento() = 200
+	override method tiempoEvento() = 280
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
@@ -116,7 +116,7 @@ class Inglaterra inherits Rival {
 
 	override method nombreEvento() = "moverInglaterra"
 
-	override method tiempoEvento() = 250
+	override method tiempoEvento() = 360
 
 	override method danio() {
 		if (jugador.proteccionCantidad() > 0) {
