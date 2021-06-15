@@ -20,6 +20,11 @@ class Pelota {
 		self.llegarAlArco()
 	}
 
+	method eliminarPelota(){
+		game.removeTickEvent("moverPelota")
+			game.removeVisual(self)
+	}
+	
 	method llegarAlArco() {
 		if (self.position().x() != 0) {
 			position = position.right(1)
@@ -27,8 +32,7 @@ class Pelota {
 				ganaste.finJuego()
 			}
 		} else {
-			game.removeTickEvent("moverPelota")
-			game.removeVisual(self)
+			self.eliminarPelota()
 		}
 	}
 
@@ -86,8 +90,7 @@ object arquero {
 
 	method atajar(unaPelota) {
 		if (unaPelota.position() == self.position()) {
-			game.removeTickEvent("moverPelota")
-			game.removeVisual(unaPelota)
+			unaPelota.eliminarPelota()
 		}
 	}
 
