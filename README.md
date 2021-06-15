@@ -36,4 +36,3 @@ Sos el Diego en el 86, estas solo en un cancha frente a distintos rivales. Tu ob
 * Gagliardo,Matias
 * Mota, Jonathan
 * Jarne Ferrarotti, Patricio
-* -------, --------
