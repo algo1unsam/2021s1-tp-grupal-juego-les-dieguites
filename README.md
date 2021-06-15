@@ -28,7 +28,7 @@ Sos el Diego en el 86, estas solo en un cancha frente a distintos rivales. Tu ob
   *  <img src="assets/vida.png" width="50px" />  **Pelota**: Logra agarrar la mayor cantidad de vidas que puedas! 
  
   ### Final
-  *Luego de superar los 5000 puntos:*
+  *Luego de superar los 3000 puntos:*
   
   *  <img src="assets/vida.png" width="50px" />  **Patear**: Podras intentar hacerle un gol como tantas pelotas dispongas al momento de superar los 3000 puntos.
 
